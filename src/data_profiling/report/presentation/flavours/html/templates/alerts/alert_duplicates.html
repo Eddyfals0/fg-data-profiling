@@ -1,1 +1,2 @@
-Dataset has {{ alert.values['n_duplicates'] }} ({{ alert.values['p_duplicates'] | fmt_percent }}) <a href="#duplicate">duplicate rows</a>
+{% set rows %}<a href="#duplicate">{{ tt('alerts.duplicate_rows') }}</a>{% endset %}
+{{ alert_text('duplicates', n=alert.values['n_duplicates'], p=(alert.values['p_duplicates'] | fmt_percent), rows=rows) }}

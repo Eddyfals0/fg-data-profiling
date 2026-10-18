@@ -1,16 +1,14 @@
-{% for batch_items in items | batch(batch_size) %}
-    <div class="row sub-item">
-        {% for item in batch_items %}
-            <div class="col-sm-{{ '%d' | format(12 / batch_size) }}{% if item.content['classes'] %} {{ item.content['classes'] }}{% endif %}">
-                {% if "name" in item.content %}
-                    {% if subtitles or item.content["subtitles"] %}
-                        <h5 class="item-header">{{ item.name }}</h5>
-                    {% elif titles or item.content["titles"] %}
-                        <h4 class="item-header">{{ item.name }}</h4>
-                    {% endif %}
+<div class="grid grid--{{ batch_size }}">
+    {% for item in items %}
+        <div class="grid-cell{% if item.content['classes'] %} {{ item.content['classes'] }}{% endif %}">
+            {% if "name" in item.content %}
+                {% if subtitles or item.content["subtitles"] %}
+                    <h5 class="item-title item-title--small">{{ item.name | label }}</h5>
+                {% elif titles or item.content["titles"] %}
+                    <h4 class="item-title">{{ item.name | label }}</h4>
                 {% endif %}
-                {{ item.render() }}
-            </div>
-        {% endfor %}
-    </div>
-{% endfor %}
+            {% endif %}
+            {{ item.render() }}
+        </div>
+    {% endfor %}
+</div>

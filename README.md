@@ -97,6 +97,17 @@ To generate the standard profiling report, merely run:
 profile = ProfileReport(df, title="Profiling Report")
 ```
 
+### Language and Markdown export
+
+The report text is available in English (default) and Spanish. Translations live in JSON catalogs under `src/data_profiling/locales/`. `language` sets the language the report opens in; readers can switch it with the EN / ES control in the report itself, and their choice is remembered in the browser.
+
+```python
+profile = ProfileReport(df, title="Ventas", language="es")
+profile.to_file("report.html")   # interactive HTML report
+profile.to_file("report.md")     # Markdown written by the library, easy for tools and LLMs to read
+markdown = profile.to_markdown()
+```
+
 ## 📊 Key features
 
 - **Type inference**: automatic detection of columns' data types (*Categorical*, *Numerical*, *Date*, etc.)

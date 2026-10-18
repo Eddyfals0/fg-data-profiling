@@ -1,30 +1,34 @@
 {% if tabs | length > 0 %}
-    <div class="row item {% if classes %}{{ classes }}{% endif %}" {% if id %} id="{{ id }}"{% endif %}>
-        <ul class="nav nav-tabs tab-nav" role="tablist">
+    {# Interactions nest one tab group per axis: name them so the reader knows which is which. #}
+    {% if anchor_id == 'interactions' %}
+        {% set axis = 'tabs.x_axis' %}
+    {% elif anchor_id is string and anchor_id.startswith('interactions_') %}
+        {% set axis = 'tabs.y_axis' %}
+    {% else %}
+        {% set axis = none %}
+    {% endif %}
+    <div class="tabs{% if nested %} tabs--nested{% endif %}{% if classes %} {{ classes }}{% endif %}" data-tabs{% if id %} id="{{ id }}"{% endif %}>
+        {% if axis %}<div class="tabs-axis"><span class="tabs-axis-label" aria-hidden="true">{{ tt(axis) }}</span>{% endif %}
+        <div class="tablist" role="tablist"{% if axis %} {{ ta('aria-label', axis) }}{% endif %}>
             {% for tab in tabs %}
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link {% if loop.first %}active{% endif %}"
-                            id="tab-{{ anchor_id }}-{{ tab.anchor_id }}"
-                            data-bs-toggle="tab"
-                            data-bs-target="#tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}"
-                            type="button"
-                            role="tab"
-                            aria-controls="tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}"
-                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}">{{ tab.name | fmt_badge }}</button>
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="tab-content">
-            {% for tab in tabs %}
-                <div class="tab-pane fade {% if loop.first %}show active{% endif %}"
-                     id="tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}"
-                     role="tabpanel"
-                     aria-labelledby="tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}">
-                    <div class="row item">
-                        {{ tab.render() }}
-                    </div>
-                </div>
+                <button class="tab"
+                        type="button"
+                        role="tab"
+                        id="tab-{{ anchor_id }}-{{ tab.anchor_id }}"
+                        aria-controls="tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}"
+                        aria-selected="{{ 'true' if loop.first else 'false' }}"
+                        tabindex="{{ '0' if loop.first else '-1' }}">{{ tab.name | label(badge=True) }}</button>
             {% endfor %}
         </div>
+        {% if axis %}</div>{% endif %}
+        {% for tab in tabs %}
+            <div class="tabpanel"
+                 role="tabpanel"
+                 id="tab-pane-{{ anchor_id }}-{{ tab.anchor_id }}"
+                 aria-labelledby="tab-{{ anchor_id }}-{{ tab.anchor_id }}"
+                 {% if not loop.first %}hidden{% endif %}>
+                {{ tab.render() }}
+            </div>
+        {% endfor %}
     </div>
 {% endif %}

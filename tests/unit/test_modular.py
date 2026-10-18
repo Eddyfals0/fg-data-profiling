@@ -69,10 +69,10 @@ def test_modular_absent(tdf):
     )
 
     html = profile.to_html()
-    assert "Correlations</h1>" not in html
-    assert "Duplicate rows</h1>" not in html
-    assert "Sample</h1>" not in html
-    assert "Missing values</h1>" not in html
+    assert "Correlations</span></h2>" not in html
+    assert "Duplicate rows</span></h2>" not in html
+    assert "Sample</span></h2>" not in html
+    assert "Missing values</span></h2>" not in html
 
 
 def test_modular_present(tdf):
@@ -98,7 +98,7 @@ def test_modular_present(tdf):
     )
 
     html = profile.to_html()
-    assert "Correlations</h1>" in html
-    assert "Duplicate rows</h1>" in html
-    assert "Sample</h1>" in html
-    assert "Missing values</h1>" in html
+    assert "Correlations</span></h2>" in html
+    assert "Duplicate rows</span></h2>" in html
+    assert "Sample</span></h2>" in html
+    assert "Missing values</span></h2>" in html

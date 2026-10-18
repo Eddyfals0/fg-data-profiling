@@ -1,5 +1,6 @@
 import pandas as pd
 
+from data_profiling.i18n import html_label
 from data_profiling.report.presentation.core.duplicate import Duplicate
 from data_profiling.report.presentation.flavours.html import templates
 
@@ -11,7 +12,7 @@ def to_html(df: pd.DataFrame) -> str:
     if df.empty:
         html = html.replace(
             "<tbody>",
-            f"<tbody><tr><td colspan={len(df.columns) + 1}>Dataset does not contain duplicate rows.</td></tr>",
+            f"<tbody><tr><td colspan={len(df.columns) + 1}>{html_label('Dataset does not contain duplicate rows.')}</td></tr>",
         )
     return html
 

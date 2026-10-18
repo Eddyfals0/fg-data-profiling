@@ -16,6 +16,6 @@ def test_report_title_strip_tags():
 
     # But not from the navigation bar
     assert (
-        '<a class="navbar-brand anchor" href="#top"><strong>Title</strong>: with <em>tags</em></a>'
+        "<strong>Title</strong>: with <em>tags</em></span></a>"
         in html
     )

@@ -22,6 +22,45 @@ from data_profiling.report.presentation.core.root import Root
 from data_profiling.report.structure.correlations import get_correlation_items
 from data_profiling.report.structure.overview import get_dataset_items
 from data_profiling.utils.dataframe import slugify
+from data_profiling.visualisation.charts import missing_spec, static_image
+
+
+def _missing_count_chart(
+    config: Settings, summary: BaseDescription, key: str, item: dict
+) -> Renderable:
+    """Missing values per column, drawn in the browser from the variable summaries."""
+    compare = not isinstance(item["name"], str)
+    n_reports = len(item["name"]) if compare else 1
+
+    def per_report(value: object, idx: int) -> float:
+        if isinstance(value, (list, tuple)):
+            return float(value[idx]) if value[idx] is not None else 0.0
+        return float(value)  # type: ignore[arg-type]
+
+    columns = list(summary.variables.keys())
+    missing = [
+        [
+            per_report(summary.variables[column].get("n_missing", 0), idx)
+            for column in columns
+        ]
+        for idx in range(n_reports)
+    ]
+    totals = [per_report(summary.table["n"], idx) for idx in range(n_reports)]
+    image = item["matrix"][0] if compare else item["matrix"]
+    return ImageWidget(
+        missing_spec(
+            columns,
+            missing,
+            totals,
+            labels=list(config.html.style._labels),
+            fallback=static_image,
+            fallback_args=(image,),
+        ),
+        image_format=config.plot.image_format,
+        alt="Missing values per column",
+        name=item["name"][0] if compare else item["name"],
+        anchor_id=key,
+    )
 
 
 def get_missing_items(config: Settings, summary: BaseDescription) -> list:
@@ -35,7 +74,9 @@ def get_missing_items(config: Settings, summary: BaseDescription) -> list:
         A list with the missing diagrams
     """
     items = [
-        ImageWidget(
+        _missing_count_chart(config, summary, key, item)
+        if key == "bar" and config.plot.interactive
+        else ImageWidget(
             item["matrix"],
             image_format=config.plot.image_format,
             alt=item["name"],

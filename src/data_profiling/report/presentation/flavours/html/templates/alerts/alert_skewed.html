@@ -1,1 +1,2 @@
-<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name }}</code></a> is highly skewed (γ1 = {{ alert.values['skewness'] | fmt_numeric }})
+{% set column %}<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name | e }}</code></a>{% endset %}
+{{ alert_text('skewed', column=column, v=(alert.values['skewness'] | fmt_numeric)) }}

@@ -67,7 +67,7 @@ def test_deactivated_cat_frequency_plot(data_fixture, plot_type, request):
     profile.config.plot.cat_freq.show = False
     profile.config.plot.cat_freq.type = plot_type
     html_report = profile.to_html()
-    assert "Common Values (Plot)" not in html_report
+    assert 'data-l="Common Values (Plot)"' not in html_report
 
 
 @pytest.mark.parametrize(
@@ -79,7 +79,7 @@ def test_cat_frequency_default_barh_plot(data_fixture, request):
     data = request.getfixturevalue(data_fixture)
     profile = generate_report(data)
     html_report = profile.to_html()
-    assert "Common Values (Plot)" in html_report
+    assert 'data-l="Common Values (Plot)"' in html_report
 
 
 @pytest.mark.parametrize(
@@ -106,7 +106,7 @@ def test_max_unique_categories(plot_type):
     html_report = profile.to_html()
 
     # Should not show plot when unique categories exceed max_unique
-    assert "Common Values (Plot)" not in html_report
+    assert 'data-l="Common Values (Plot)"' not in html_report
 
 
 def test_more_categories_than_colors():
@@ -119,7 +119,7 @@ def test_more_categories_than_colors():
     html_report = profile.to_html()
 
     # Should still generate plot without errors
-    assert "Common Values (Plot)" in html_report
+    assert 'data-l="Common Values (Plot)"' in html_report
 
 
 @pytest.mark.skip("Skipping empty color list test. Code needs to be updated.")
@@ -131,7 +131,7 @@ def test_empty_color_list():
     html_report = profile.to_html()
 
     # Should use default colors
-    assert "Common Values (Plot)" in html_report
+    assert 'data-l="Common Values (Plot)"' in html_report
 
 
 @pytest.mark.parametrize("invalid_type", ["scatter", "box", "invalid"])

@@ -1,18 +1,7 @@
 {% if anchor_id != 'toggle-correlation-description' %}
-    <div class="col-sm-12 text-end">
-        <button class="btn btn-light"
-                data-bs-toggle="collapse"
-                data-bs-target="#bottom-{{ anchor_id }}, #minifreqtable{{ anchor_id }}"
-                aria-expanded="true"
-                aria-controls="#bottom-{{ anchor_id }}, #minifreqtable{{ anchor_id }}">
-            {{ text }}
-        </button>
-    </div>
-{% else %}
-    <button id="{{ anchor_id }}"
-            class="btn btn-light"
-            style="float: right"
-            data-bs-toggle="collapse">
-        {{ text }}
-    </button>
+    <summary class="more-toggle">
+        <span class="more-label-closed">{{ text | label }}</span>
+        <span class="more-label-open">{{ tt('more.open') }}</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+    </summary>
 {% endif %}

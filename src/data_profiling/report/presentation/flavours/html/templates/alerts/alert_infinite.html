@@ -1,1 +1,2 @@
-<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name }}</code></a> has {{ alert.values['n_infinite'] }} ({{ alert.values['p_infinite'] | fmt_percent }}) infinite values
+{% set column %}<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name | e }}</code></a>{% endset %}
+{{ alert_text('infinite', column=column, n=alert.values['n_infinite'], p=(alert.values['p_infinite'] | fmt_percent)) }}

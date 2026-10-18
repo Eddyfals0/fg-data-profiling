@@ -170,6 +170,9 @@ class CatFrequencyPlot(BaseModel):
 
 
 class Plot(BaseModel):
+    # Draw histograms, category frequencies and correlation matrices in the browser
+    # (interactive SVG) instead of embedding static matplotlib images.
+    interactive: bool = True
     missing: MissingPlot = MissingPlot()
     image_format: ImageType = ImageType.svg
     correlation: CorrelationPlot = CorrelationPlot()
@@ -194,8 +197,9 @@ class Style(BaseModel):
         # This attribute may be deprecated in the future, please use primary_colors[0]
         return self.primary_colors[0]
 
-    # Primary color used for comparisons (default: blue, red, green)
-    primary_colors: List[str] = ["#0d6efd", "#dc3545", "#198754"]
+    # Colors used for plotting and for each dataset when comparing reports
+    # (default: ink, mid grey, light grey)
+    primary_colors: List[str] = ["#111111", "#8a8a8a", "#c2c2c2"]
 
     # Base64-encoded logo image
     logo: str = ""
@@ -297,6 +301,9 @@ class Settings(BaseSettings):
 
     # Title of the document
     title: str = "YData Profiling Report"
+
+    # Language of the report text (HTML and Markdown): "en" or "es"
+    language: str = "en"
 
     dataset: Dataset = Dataset()
     variables: Variables = Variables()

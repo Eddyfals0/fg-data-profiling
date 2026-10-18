@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 from data_profiling.config import ImageType
 from data_profiling.report.presentation.core.item_renderer import ItemRenderer
@@ -7,7 +7,7 @@ from data_profiling.report.presentation.core.item_renderer import ItemRenderer
 class Image(ItemRenderer):
     def __init__(
         self,
-        image: str,
+        image: Union[str, Any],
         image_format: ImageType,
         alt: str,
         caption: Optional[str] = None,
