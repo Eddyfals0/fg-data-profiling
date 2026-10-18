@@ -1,16 +1,15 @@
-{% if is_row %}
-    <div class="row">
-{% endif %}
-    <select name="{{ name }}" id="{{ id }}" class = "{{ classes }}">
-        <option value="">Select Columns</option>
-        {% for item in items %}
-            <option value="{{ item }}">
-                {{ item }}
-            </option>
-        {% endfor %}
-    </select>
-{% if is_row %}
-    </div>
-{% endif %}
-
+<div class="toolbar" data-variable-toolbar>
+    <label class="field field--search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>
+        <span class="visually-hidden">{{ tt('toolbar.filter_name') }}</span>
+        <input type="search" name="{{ name }}" id="{{ id }}" {{ ta('placeholder', 'toolbar.placeholder') }} data-variable-filter autocomplete="off" spellcheck="false">
+    </label>
+    <div class="chips" role="group" {{ ta('aria-label', 'toolbar.by_type') }} data-type-filters></div>
+    <label class="switch">
+        <input type="checkbox" data-alert-filter>
+        <span>{{ tt('toolbar.only_alerts') }}</span>
+    </label>
+    <p class="toolbar-count" aria-live="polite" data-variable-count></p>
+</div>
 {{ item.render() }}
+<p class="empty" data-variable-empty hidden>{{ tt('toolbar.empty') }}</p>

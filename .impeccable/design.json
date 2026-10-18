@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T03:54:49.283275+00:00",
+  "title": "Design System: fg-data-profiling HTML report",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Paper Ground",
+        "canonical": "#fafafa",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Grey",
+        "canonical": "#f2f2f2",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e6e6e6",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#cfcfcf",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Report Ink",
+        "canonical": "#111111",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Second Ink",
+        "canonical": "#3a3a3a",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Grey",
+        "canonical": "#6b6b6b",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Faint Grey",
+        "canonical": "#a6a6a6",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "bar": {
+        "role": "neutral",
+        "displayName": "Bar Grey",
+        "canonical": "#c9c9c9",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Olive Marker",
+        "canonical": "#a6c23f",
+        "tonalRamp": [
+          "#323a12",
+          "#566520",
+          "#7a8f2d",
+          "#9fba3b",
+          "#b7ce64",
+          "#cddd93",
+          "#e2ebc1",
+          "#f6f9ec"
+        ]
+      },
+      "negative": {
+        "role": "secondary",
+        "displayName": "Deep Olive",
+        "canonical": "#6f8a12",
+        "tonalRamp": [
+          "#364409",
+          "#5e750f",
+          "#86a716",
+          "#aed91c",
+          "#c4e74b",
+          "#d6ef81",
+          "#e7f6b7",
+          "#f8fce8"
+        ]
+      },
+      "series-2": {
+        "role": "neutral",
+        "displayName": "Series Grey 2",
+        "canonical": "#8a8a8a",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "series-3": {
+        "role": "neutral",
+        "displayName": "Series Grey 3",
+        "canonical": "#c2c2c2",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "ledger-text": {
+        "role": "neutral",
+        "displayName": "Ledger Text",
+        "canonical": "#f1f1f1",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "ledger-muted": {
+        "role": "neutral",
+        "displayName": "Ledger Muted",
+        "canonical": "#8f8f8f",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Report title only, max 22ch."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Stats-strip numbers; scores at 2.5rem in the same treatment."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Variable names on sheets."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; tables at 14px; descriptions capped at 60ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Stat labels, column heads, chips, captions, ledger alert types."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Chart readouts and inline code only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 1px 2px rgb(17 17 17 / 0.04), 0 12px 32px -20px rgb(17 17 17 / 0.12)",
+        "purpose": "Variable sheets only; the only resting shadow."
+      },
+      {
+        "name": "tab-selected",
+        "value": "0 0 0 1px #e6e6e6, 0 1px 2px rgb(17 17 17 / 0.06)",
+        "purpose": "Selected segment in the sunk tab tray."
+      },
+      {
+        "name": "tooltip",
+        "value": "0 8px 24px -8px rgb(0 0 0 / 0.35)",
+        "purpose": "Ink tooltips."
+      },
+      {
+        "name": "drawer",
+        "value": "0 24px 64px -16px rgb(0 0 0 / 0.3)",
+        "purpose": "Off-canvas index under 1024px."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 3px rgb(17 17 17 / 0.08)",
+        "purpose": "Focused input, with ink border."
+      },
+      {
+        "name": "arrival-ring",
+        "value": "0 0 0 4px #a6c23f",
+        "purpose": "Deep-link arrival on a sheet, fading over 1.6s."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Hover/selected colour and border changes."
+      },
+      {
+        "name": "bar-hover",
+        "value": "90ms linear",
+        "purpose": "Chart bar fill to ink under the pointer."
+      },
+      {
+        "name": "rotate-switch",
+        "value": "200ms",
+        "purpose": "Switch knob, chevron rotation, proof-arrow nudge."
+      },
+      {
+        "name": "drawer",
+        "value": "320ms",
+        "purpose": "Mobile index slide; scrim fades 240ms."
+      },
+      {
+        "name": "arrival",
+        "value": "1.6s",
+        "purpose": "Olive ring fade on deep-link arrival."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "All animation and transition under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width 759px"
+      },
+      {
+        "name": "grid-2",
+        "value": "760px"
+      },
+      {
+        "name": "drawer",
+        "value": "max-width 1023px"
+      },
+      {
+        "name": "grid-4",
+        "value": "1200px"
+      },
+      {
+        "name": "sheet-wide",
+        "value": "1240px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Ghost hairline pill with an inline count; pressed state is solid ink. Used for alert-type and variable-type filters.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All <span class=\"ds-chip-count\">10</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Missing <span class=\"ds-chip-count\">2</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Zeros <span class=\"ds-chip-count\">3</span></button></div>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-chips{display:flex;gap:6px;flex-wrap:wrap}.ds-chip{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:4px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--sheet);color:var(--ink-2);font:500 0.8125rem var(--font);cursor:pointer;transition:background-color 160ms var(--ease-out),border-color 160ms var(--ease-out),color 160ms var(--ease-out)}.ds-chip:hover{border-color:var(--ink);color:var(--ink)}.ds-chip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.ds-chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}.ds-chip-count{color:var(--muted);font-variant-numeric:tabular-nums}.ds-chip[aria-pressed=true] .ds-chip-count{color:#bdbdbd}"
+    },
+    {
+      "name": "More Details Toggle",
+      "kind": "button",
+      "refersTo": "more-toggle",
+      "description": "Ghost pill disclosure that opens a sheet's detail tabs; chevron rotates when open.",
+      "html": "<button class=\"ds-more\">More details <svg viewBox=\"0 0 20 20\" width=\"16\" height=\"16\"><path d=\"M6 8l4 4 4-4\"/></svg></button>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-more{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:6px 12px 6px 14px;border:1px solid var(--line-strong);border-radius:999px;background:var(--sheet);color:var(--ink);font:600 0.8125rem var(--font);cursor:pointer;transition:border-color 160ms var(--ease-out)}.ds-more svg{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform 200ms var(--ease-out)}.ds-more:hover{border-color:var(--ink)}.ds-more:hover svg{transform:rotate(180deg)}.ds-more:focus-visible{outline:2px solid var(--ink);outline-offset:2px}"
+    },
+    {
+      "name": "Filter Field",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "38px hairline search field with a stroke search glyph and a / keycap hint.",
+      "html": "<label class=\"ds-field\"><svg viewBox=\"0 0 20 20\"><circle cx=\"9\" cy=\"9\" r=\"5.5\"/><path d=\"M13 13l3.5 3.5\"/></svg><input type=\"search\" placeholder=\"Filter 12 variables\"><kbd class=\"ds-kbd\">/</kbd></label>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-field{position:relative;display:flex;align-items:center;max-width:260px}.ds-field svg{position:absolute;left:11px;width:16px;height:16px;fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;pointer-events:none}.ds-field input{width:100%;min-height:38px;padding:8px 40px 8px 34px;font:0.875rem var(--font);color:var(--ink);background:var(--sheet);border:1px solid var(--line-strong);border-radius:10px;transition:border-color 160ms var(--ease-out),box-shadow 160ms var(--ease-out)}.ds-field input::placeholder{color:var(--muted)}.ds-field input:hover{border-color:#a6a6a6}.ds-field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgb(17 17 17 / 0.08)}.ds-kbd{position:absolute;right:10px;min-width:1.6em;padding:0 0.4em;border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:5px;background:var(--sheet);color:var(--muted);font:0.75rem/1.5 var(--mono);text-align:center}.ds-field input:focus + .ds-kbd{display:none}"
+    },
+    {
+      "name": "Index Navigation",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Sticky index rows: ring markers that fill olive when current, variable rows with muted type and ink count badge.",
+      "html": "<nav class=\"ds-index\"><a href=\"#\" aria-current=\"true\">Overview <span class=\"ds-count\">10</span></a><a href=\"#\">Variables</a><a href=\"#\">Correlations</a><a class=\"ds-var\" href=\"#\"><span class=\"ds-name\">Age</span><span class=\"ds-type\">Numeric</span><span class=\"ds-count\">1</span></a></nav>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-index{display:flex;flex-direction:column;width:256px;padding:12px;background:var(--bg)}.ds-index a{position:relative;display:flex;align-items:center;gap:8px;padding:6px 10px 6px 24px;border-radius:8px;color:var(--ink-2);font-weight:500;text-decoration:none;transition:background-color 160ms var(--ease-out),color 160ms var(--ease-out)}.ds-index a::before{content:'';position:absolute;left:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-strong)}.ds-index a:hover{background:var(--sunk);color:var(--ink)}.ds-index a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.ds-index a[aria-current=true]{background:var(--sheet);color:var(--ink);box-shadow:0 0 0 1px var(--line)}.ds-index a[aria-current=true]::before{background:var(--accent);box-shadow:none}.ds-index a.ds-var{padding:5px 10px;font-weight:400;font-size:0.875rem}.ds-index a.ds-var::before{display:none}.ds-name{flex:1}.ds-type{color:var(--muted);font-size:0.75rem}.ds-count{margin-left:auto;min-width:20px;padding:0 6px;border-radius:999px;background:var(--ink);color:#fff;font-size:0.6875rem;font-weight:600;line-height:18px;text-align:center;font-variant-numeric:tabular-nums}.ds-type + .ds-count{margin-left:2px}"
+    },
+    {
+      "name": "Segmented Tabs",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Tabs as a sunk tray; the selected segment lifts to white.",
+      "html": "<div class=\"ds-tablist\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Statistics</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Histogram</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Common values</button></div>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-tablist{display:inline-flex;gap:2px;padding:3px;background:var(--sunk);border-radius:11px}.ds-tab{min-height:32px;padding:5px 14px;border:0;border-radius:8px;background:transparent;color:var(--muted);font:500 0.875rem var(--font);cursor:pointer;transition:color 160ms var(--ease-out),background-color 160ms var(--ease-out),box-shadow 160ms var(--ease-out)}.ds-tab:hover{color:var(--ink)}.ds-tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.ds-tab[aria-selected=true]{background:var(--sheet);color:var(--ink);box-shadow:0 0 0 1px var(--line),0 1px 2px rgb(17 17 17 / 0.06)}"
+    },
+    {
+      "name": "Stats Strip",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Dataset figures split by vertical hairlines between top and bottom rules.",
+      "html": "<dl class=\"ds-stats\"><div class=\"ds-stat\"><dt>Observations</dt><dd>891</dd></div><div class=\"ds-stat\"><dt>Missing cells</dt><dd>8.1%<small>866 cells</small></dd></div><div class=\"ds-stat\"><dt>Memory</dt><dd>285.6 KiB<small>328.2 B per row</small></dd></div></dl>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink)}.ds-stat{padding:20px 24px 22px;border-left:1px solid var(--line)}.ds-stat:first-child{border-left:0;padding-left:0}.ds-stat dt{color:var(--muted);font-size:0.8125rem;font-weight:500}.ds-stat dd{margin:6px 0 0;font-size:2rem;font-weight:500;letter-spacing:-0.03em;line-height:1.1;font-variant-numeric:tabular-nums}.ds-stat small{display:block;margin-top:6px;color:var(--muted);font-size:0.8125rem;letter-spacing:0;line-height:1.4}"
+    },
+    {
+      "name": "Alert Ledger",
+      "kind": "card",
+      "refersTo": "ledger",
+      "description": "The one inverted panel: each alert is a sentence with a circular proof link to its evidence.",
+      "html": "<section class=\"ds-ledger\"><h3>Alerts <span>2</span></h3><div class=\"ds-row\"><span class=\"ds-ltype\">Missing</span><p><code>Age</code> has 177 (19.9%) missing values</p><a class=\"ds-proof\" href=\"#\" aria-label=\"Show proof\"><svg viewBox=\"0 0 16 16\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></a></div><div class=\"ds-row\"><span class=\"ds-ltype\">Zeros</span><p><code>SibSp</code> has 608 (68.2%) zeros</p><a class=\"ds-proof\" href=\"#\" aria-label=\"Show proof\"><svg viewBox=\"0 0 16 16\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></a></div></section>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-ledger{background:var(--ink);color:#f1f1f1;border-radius:16px;padding:28px 32px 12px}.ds-ledger h3{margin:0 0 18px;font-size:1.25rem;font-weight:600;letter-spacing:-0.02em;color:#fff}.ds-ledger h3 span{margin-left:8px;color:#8f8f8f;font-weight:500}.ds-row{display:grid;grid-template-columns:minmax(120px,168px) minmax(0,1fr) 36px;align-items:center;gap:16px;padding:12px 0;border-top:1px solid rgb(255 255 255 / 0.1)}.ds-row p{margin:0;line-height:1.5}.ds-ltype{color:#9a9a9a;font-size:0.8125rem;font-weight:500}.ds-ledger code{font-family:var(--mono);font-size:0.86em;background:rgb(255 255 255 / 0.1);color:#fff;border-radius:4px;padding:0.08em 0.36em}.ds-proof{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid rgb(255 255 255 / 0.22);color:#fff;transition:background-color 160ms var(--ease-out),border-color 160ms var(--ease-out),transform 200ms var(--ease-out)}.ds-proof svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ds-proof:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateX(2px)}.ds-proof:focus-visible{outline:2px solid #fff;outline-offset:2px}"
+    },
+    {
+      "name": "Variable Sheet with Readout",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "White hairline sheet with a key/value table (alert row in ink and weight) and a bar chart whose exact values read out in mono below.",
+      "html": "<article class=\"ds-sheet\"><h3>Age <small>Numeric</small></h3><table class=\"ds-kv\"><tr><th>Distinct</th><td>88</td></tr><tr class=\"is-alert\"><th>Missing</th><td>177</td></tr><tr><th>Mean</th><td>29.70</td></tr></table><figure class=\"ds-chart\"><div class=\"ds-bars\"><span style=\"height:30%\"></span><span style=\"height:62%\"></span><span style=\"height:100%\"></span><span style=\"height:74%\"></span><span style=\"height:40%\"></span><span style=\"height:18%\"></span></div><figcaption class=\"ds-readout\"><b>24 to 32</b> 186 rows (20.9%)</figcaption></figure></article>",
+      "css": ":host{--bg:#fafafa;--sheet:#fff;--sunk:#f2f2f2;--line:#e6e6e6;--line-strong:#cfcfcf;--ink:#111;--ink-2:#3a3a3a;--muted:#6b6b6b;--accent:#a6c23f;--bar:#c9c9c9;--ease-out:cubic-bezier(0.16,1,0.3,1);--font:Figtree,ui-sans-serif,system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-family:var(--font);}.ds-sheet{background:var(--sheet);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgb(17 17 17 / 0.04),0 12px 32px -20px rgb(17 17 17 / 0.12);padding:28px 32px;color:var(--ink);max-width:420px}.ds-sheet h3{margin:0 0 16px;font-size:1.1875rem;font-weight:600;letter-spacing:-0.02em}.ds-sheet h3 small{display:block;margin-top:4px;color:var(--muted);font-size:0.875rem;font-weight:400;letter-spacing:0}.ds-kv{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:0.875rem}.ds-kv th,.ds-kv td{padding:7px 0;border-bottom:1px solid var(--line)}.ds-kv tr:first-child th,.ds-kv tr:first-child td{border-top:1px solid var(--line)}.ds-kv th{text-align:left;color:var(--muted);font-weight:400}.ds-kv td{text-align:right}.ds-kv .is-alert th,.ds-kv .is-alert td{color:var(--ink);font-weight:600}.ds-kv .is-alert th::before{content:'';display:inline-block;width:6px;height:6px;margin:0 8px 1px 0;border-radius:50%;background:var(--ink)}.ds-chart{margin:20px 0 0}.ds-bars{display:flex;align-items:flex-end;gap:2px;height:88px;border-bottom:1px solid var(--line-strong)}.ds-bars span{flex:1;background:var(--bar);transition:background-color 90ms linear}.ds-bars span:hover{background:var(--ink)}.ds-readout{min-height:1.5em;margin-top:8px;color:var(--muted);font:0.75rem/1.5 var(--mono);font-variant-numeric:tabular-nums}.ds-readout b{color:var(--ink);font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Claim and Its Proof",
+    "overview": "The report is an analysis document set in one neutral scale. Near-white ground, white sheets on hairlines, near-black ink, and a ladder of greys carry everything; hue is almost absent. Every claim the report makes has a place where it is proven: an alert is a plain sentence in the ledger, and its round arrow lands on the variable sheet whose table and chart demonstrate it. Exact numbers are always one hover away, read out in a monospace strip under the chart rather than in floating tooltips.\n\nDensity is high but calm. A sticky left index holds sections and a filterable list of every variable with its type and alert count; the main column opens with a large title, a hairline-split stats strip, and the inverted ledger, so the state of the data is legible in the first viewport. Below, each variable is a white sheet with key/value tables, a mini chart and a \"more details\" disclosure.\n\nEmphasis is carried by contrast, never by colour. The one inverted near-black panel is the alert ledger; the one chromatic token is a small olive marker that only ever signals \"you are here\" or \"this one\".",
+    "keyCharacteristics": [
+      "One neutral scale; ink #111111 on near-white, greys for hierarchy.",
+      "The alert ledger is the only inverted surface.",
+      "A single olive marker for position, hover guide and arrival, never for text or data categories (correlation's negative pole is the one data exception).",
+      "Figtree at 400/500/600, tabular figures everywhere numbers sit in columns, monospace only for values and readouts.",
+      "Hairlines, soft radii, almost no shadow."
+    ],
+    "rules": [
+      {
+        "name": "The Contrast Not Hue Rule",
+        "body": "Severity is carried by inversion and weight: the ledger is ink, alert rows in key/value tables go 600 weight with an ink dot, warning badges go solid ink. No red, amber or green status colours.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Marker Rule",
+        "body": "Olive marks position and focus of attention, at dot, line or ring scale. If it covers an area or carries a word, it is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Grey Series Rule",
+        "body": "Comparison series are greys plus dashes. Olive is never a series colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Any number that can sit above another number uses tabular figures: stats, tables, counts, badges, axes, readouts.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Instrumentation Rule",
+        "body": "Monospace is for values and readouts (code, column names, chart readouts), not for labels or headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline First Rule",
+        "body": "Separate with a 1px #e6e6e6 rule or a ground step before reaching for a shadow. A new surface that needs a shadow to be seen is in the wrong tone.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every surface in the neutral scale and let the ledger be the single inverted panel.",
+      "Do pair each alert with a link to the sheet or chart that proves it, and ring the target in olive for 1.6s on arrival.",
+      "Do show exact values in the mono readout under each chart (12px, muted, bold ink value).",
+      "Do use tabular figures for every number in a column, stat, badge or axis.",
+      "Do separate with 1px #e6e6e6 hairlines and the bg-to-sheet step; keep the sheet shadow as the only resting shadow.",
+      "Do distinguish comparison datasets by grey tone and dash pattern.",
+      "Do hatch \"other\", missing and redacted values instead of colouring them."
+    ],
+    "donts": [
+      "Don't introduce status hues (red, amber, green) for alerts or badges; severity is ink and weight.",
+      "Don't use the olive accent for text, filled areas, or comparison series.",
+      "Don't put alerts behind a tab or above-the-fold tabs in the overview.",
+      "Don't set labels or headings in monospace.",
+      "Don't add floating chart tooltips in place of the fixed readout.",
+      "Don't use weights outside 400 / 500 / 600."
+    ]
+  }
+}

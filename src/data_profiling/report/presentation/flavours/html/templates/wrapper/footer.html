@@ -1,7 +1,4 @@
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-            <p class="text-body-secondary text-center">{{ footer.render() }}</p>
-        </div>
-    </div>
+<footer class="footer">
+    <p>{{ footer.render() | label }}</p>
+    <p class="footer-keys"><kbd>/</kbd> {{ tt('footer.filter') }} <kbd>J</kbd> <kbd>K</kbd> {{ tt('footer.next_prev') }}</p>
 </footer>

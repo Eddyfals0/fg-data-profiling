@@ -1,10 +1,10 @@
-<div class="table-responsive">
-    <table class="freq table table-hover table-striped {% if idx is defined %}table-{{ idx }}{% endif %}">
+<div class="table-scroll">
+    <table class="freq{% if idx is defined %} freq--{{ idx }}{% endif %}">
         <thead>
             <tr>
-                <td>Value</td>
-                <td>Count</td>
-                <td>Frequency (%)</td>
+                <th scope="col">{{ tt('freq.value') }}</th>
+                <th scope="col" class="num">{{ tt('freq.count') }}</th>
+                <th scope="col" class="freq-share">{{ tt('freq.frequency') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -12,32 +12,21 @@
                 {% for row in rows %}
                     <tr class="{{ row['extra_class'] }}">
                         {% if row['extra_class'] | length == 0 and redact %}
-                            <td title="Redacted value">
-                                <div class="text-placeholder"></div>
-                            </td>
+                            <td {{ ta('title', 'freq.redacted') }}><span class="redacted" {{ ta('aria-label', 'freq.redacted') }}></span></td>
                         {% else %}
-                            <td title="{{ row['label'] | fmt }}">
-                                {{ row['label'] | fmt }}
-                            </td>
+                            {% set shown = (row['label'] | label) if row['extra_class'] else (row['label'] | fmt) %}
+                            <td class="freq-label"{% if not row['extra_class'] %} title="{{ row['label'] | fmt }}"{% endif %}>{{ shown }}</td>
                         {% endif %}
-                        <td>{{ row['count'] }}</td>
-                        <td>
-                            <div class="bar" style="width:{{ row['width'] | fmt_percent(edge_cases=False) }}">
-                                {% if row['width'] > 0.40 %}
-                                    {{ row['percentage'] | fmt_percent }}
-                                {% else %}
-                                    &nbsp;
-                                {% endif %}
-                            </div>
-                            {% if row['width'] <= 0.40 %}
-                                {{ row['percentage'] | fmt_percent }}
-                            {% endif %}
+                        <td class="num">{{ row['count'] }}</td>
+                        <td class="freq-share">
+                            <span class="freq-bar"><span style="width: {{ row['width'] | fmt_percent(edge_cases=False) }}"></span></span>
+                            <span class="freq-pct">{{ row['percentage'] | fmt_percent }}</span>
                         </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="3">No values found.</td>
+                    <td colspan="3" class="muted">{{ tt('freq.none') }}</td>
                 </tr>
             {% endif %}
         </tbody>

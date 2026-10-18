@@ -1,34 +1,16 @@
-<div class="row" id="minifreqtable{{ varid }}">
-    <div class="table-responsive">
-        <table class="mini freq {% if idx is defined %}table-{{ idx }}{% endif %}">
-            {% if rows | length > 0 %}
-                {% for row in rows %}
-                    <tr class="{{ row['extra_class'] }}">
-                        <th width="10%">
-                            {% if not redact %}
-                                {{ row['label'] | fmt }}
-                            {% endif %}
-                        </th>
-                        <td width="10%">
-                            <div class="bar"
-                                 style="width:{{ row['width'] | fmt_percent(edge_cases=False) }}"
-                                 data-bs-toggle="tooltip"
-                                 data-bs-placement="center"
-                                 data-bs-html="true"
-                                 data-bs-delay="500">
-                                {% if row['width'] > 0.10 %}
-                                    {{ row['count'] }}&nbsp;
-                                {% else %}
-                                    &nbsp;
-                                {% endif %}
-                            </div>
-                            {% if row['width'] <= 0.10 %}
-                                {{ row['count'] }}
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
+<div class="minifreq{% if idx is defined %} minifreq--{{ idx }}{% endif %}" id="minifreqtable{{ varid }}">
+    {% if rows | length > 0 %}
+        <table>
+            {% for row in rows %}
+                <tr class="{{ row['extra_class'] }}">
+                    {% set shown = (row['label'] | label) if row['extra_class'] else (row['label'] | fmt) %}
+                    <th scope="row"{% if not redact and not row['extra_class'] %} title="{{ row['label'] | fmt }}"{% endif %}>{% if not redact %}{{ shown }}{% else %}<span class="redacted" {{ ta('aria-label', 'freq.redacted') }}></span>{% endif %}</th>
+                    <td>
+                        <span class="freq-bar"><span style="width: {{ row['width'] | fmt_percent(edge_cases=False) }}"></span></span>
+                    </td>
+                    <td class="num">{{ row['count'] }}</td>
+                </tr>
+            {% endfor %}
         </table>
-    </div>
+    {% endif %}
 </div>

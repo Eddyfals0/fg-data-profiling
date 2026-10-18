@@ -1,1 +1,2 @@
-Dataset has {{ alert.values['n_near_dups'] }} ({{ alert.values['p_near_dups'] | fmt_percent }}) <a href="#near_duplicate">near duplicate rows</a>
+{% set rows %}<a href="#near_duplicate">{{ tt('alerts.near_duplicate_rows') }}</a>{% endset %}
+{{ alert_text('near_duplicates', n=alert.values['n_near_dups'], p=(alert.values['p_near_dups'] | fmt_percent), rows=rows) }}

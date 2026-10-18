@@ -1,1 +1,2 @@
-<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name }}</code></a> has dirty categories: {{ alert.values['n_fuzzy_vals'] }} distinct values
+{% set column %}<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name | e }}</code></a>{% endset %}
+{{ alert_text('dirty_category', column=column, n=alert.values['n_fuzzy_vals']) }}

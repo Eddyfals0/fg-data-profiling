@@ -76,9 +76,16 @@ def render_text(config: Settings, summary: Dict[str, Any]) -> Dict[str, Any]:
     )
     top_items.append(table)
 
-    if words and "word_counts" in summary:
+    # The same word cloud is shown in the summary and in the "Words" tab.
+    wordcloud = (
+        plot_word_cloud(config, summary["word_counts"])
+        if words and "word_counts" in summary
+        else None
+    )
+
+    if wordcloud is not None:
         mini_wordcloud = Image(
-            plot_word_cloud(config, summary["word_counts"]),
+            wordcloud,
             image_format=config.plot.image_format,
             alt="Mini wordcloud",
         )
@@ -158,7 +165,9 @@ def render_text(config: Settings, summary: Dict[str, Any]) -> Dict[str, Any]:
         )
 
         image = Image(
-            plot_word_cloud(config, summary["word_counts"]),
+            wordcloud
+            if wordcloud is not None
+            else plot_word_cloud(config, summary["word_counts"]),
             image_format=config.plot.image_format,
             alt="Wordcloud",
         )

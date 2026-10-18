@@ -1,3 +1,4 @@
+import re
 import numpy as np
 import pandas as pd
 
@@ -25,4 +26,4 @@ def test_urls(get_data_file):
     )
 
     assert "URL</span>" in profile.to_html(), "URL not detected"
-    assert "<th>URL<td" in profile.to_html(), "URL not detected"
+    assert re.search(r"<th scope=row><span data-l=\"?URL\"?>", profile.to_html()), "URL not detected"

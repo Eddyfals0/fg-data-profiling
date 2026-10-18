@@ -1,6 +1,9 @@
 # Title of the document
 title: YData Profiling Report
 
+# Language of the report text (HTML and Markdown): en or es
+language: en
+
 # Metadata
 dataset:
   description: ""
@@ -132,6 +135,9 @@ report:
 
 # Plot-specific settings
 plot:
+  # Draw histograms, category frequencies and correlations in the browser (interactive)
+  interactive: true
+
   # Image format (svg or png)
   image_format: svg
   dpi: 800
@@ -215,8 +221,8 @@ html:
     theme: null
     logo: ""
     primary_colors:
-      - "#0d6efd"
-      - "#dc3545"
-      - "#198754"
+      - "#111111"
+      - "#8a8a8a"
+      - "#c2c2c2"
 
   full_width: false

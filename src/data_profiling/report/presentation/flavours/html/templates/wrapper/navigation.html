@@ -1,36 +1,67 @@
-<a class="anchor-pos" id="top"></a>
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            {% if logo | length > 0 %}
-                <a class="navbar-brand" href="#top">
-                    <img alt="Logo" src="{{ logo }}">
-                </a>
-            {% endif %}
-            <a class="navbar-brand anchor" href="#top">{{ title }}</a>
-        </div>
-        <a class="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#navbar"
-                aria-controls="navbar"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </a>
-        <div id="navbar" class="offcanvas offcanvas-end" aria-labelledby="offcanvas-navbar-label">
-            <div class="offcanvas-header">
-                <h5 id="offcanvas-navbar-label" class="offcanvas-title">{{ title }}</h5>
-                <a type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></a>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav navbar-nav-scroll justify-content-end flex-grow-1">
-                    {% for (name, anchor_id) in nav_items %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#{{ anchor_id }}">{{ name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+<div class="topbar">
+    <a class="topbar-title" href="#top">{{ title | label }}</a>
+    <div class="lang-switch" role="group" {{ ta('aria-label', 'lang.switch') }}>
+        {% for code, name in languages() %}
+            <button type="button" data-lang="{{ code }}" lang="{{ code }}" title="{{ name }}" aria-pressed="{{ 'true' if code == language() else 'false' }}">{{ code | upper }}</button>
+        {% endfor %}
     </div>
-</nav>
+    <button class="icon-button" type="button" data-index-open aria-controls="index" aria-expanded="false">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+        <span class="visually-hidden">{{ tt('nav.open') }}</span>
+    </button>
+</div>
+<aside class="index" id="index" {{ ta('aria-label', 'nav.index') }}>
+    <div class="index-head">
+        <div class="index-brand">
+            <a class="index-title" href="#top">{{ title | label }}</a>
+            <div class="lang-switch" role="group" {{ ta('aria-label', 'lang.switch') }}>
+                {% for code, name in languages() %}
+                    <button type="button" data-lang="{{ code }}" lang="{{ code }}" title="{{ name }}" aria-pressed="{{ 'true' if code == language() else 'false' }}">{{ code | upper }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <button class="icon-button index-close" type="button" data-index-close>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+            <span class="visually-hidden">{{ tt('nav.close') }}</span>
+        </button>
+    </div>
+    <nav class="index-sections" {{ ta('aria-label', 'nav.sections') }}>
+        <ul>
+            {% for (name, anchor_id) in nav_items %}
+                <li>
+                    <a href="#{{ anchor_id }}" data-spy="{{ anchor_id }}">
+                        {{ name | label }}
+                        {% if anchor_id == 'overview' and n_alerts %}
+                            <span class="index-count" {{ ta('title', 'nav.alerts', n=n_alerts) }}>{{ n_alerts }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% if index_variables is defined and index_variables | length > 0 %}
+        <div class="index-variables">
+            <label class="field field--search">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>
+                <span class="visually-hidden">{{ tt('nav.filter') }}</span>
+                <input type="search" {{ ta('placeholder', 'nav.filter_placeholder', n=(index_variables | length)) }} data-variable-filter autocomplete="off" spellcheck="false">
+                <kbd aria-hidden="true">/</kbd>
+            </label>
+            <ol class="index-list">
+                {% for var in index_variables %}
+                    <li data-name="{{ var.name | lower | e }}">
+                        <a href="#{{ var.anchor }}" data-spy="{{ var.anchor }}">
+                            <span class="index-name">{{ var.name | e }}</span>
+                            <span class="index-type">{{ var.type }}</span>
+                            {% if var.alerts %}
+                                <span class="index-flag" {{ ta('title', 'nav.variable_alerts_one') if var.alerts == 1 else ta('title', 'nav.variable_alerts', n=var.alerts) }}>{{ var.alerts }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ol>
+            <p class="index-empty" hidden>{{ tt('nav.no_match') }}</p>
+        </div>
+    {% endif %}
+</aside>
+<div class="scrim" data-index-close hidden></div>

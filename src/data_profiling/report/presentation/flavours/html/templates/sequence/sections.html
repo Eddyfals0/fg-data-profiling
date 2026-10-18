@@ -1,13 +1,11 @@
-<div class="{% if full_width %}container-fluid{% else %}container{% endif %}">
+<div class="sections{% if full_width %} sections--full{% endif %}">
     {% for section in sections %}
         {% set html = section.render() %}
         {% if html | length > 0 %}
-            <div id="{{ section.content['anchor_id'] }}" class="section-header">
-                <h1 class="section-name">{{ section.content['name'] }}</h1>
-            </div>
-            <div class="section-items">
+            <section id="{{ section.content['anchor_id'] }}" class="section section--{{ section.content['anchor_id'] }}" aria-labelledby="{{ section.content['anchor_id'] }}-title">
+                <h2 class="section-title" id="{{ section.content['anchor_id'] }}-title">{{ section.content['name'] | label }}</h2>
                 {{ html }}
-            </div>
+            </section>
         {% endif %}
     {% endfor %}
 </div>

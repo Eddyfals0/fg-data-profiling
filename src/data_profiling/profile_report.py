@@ -24,6 +24,7 @@ from visions import VisionsTypeset
 
 from data_profiling.config import Config, Settings, SparkSettings
 from data_profiling.expectations_report import ExpectationsReport
+from data_profiling.i18n import use_language
 from data_profiling.model import BaseDescription
 from data_profiling.model.alerts import AlertType
 from data_profiling.model.describe import describe as describe_df
@@ -44,6 +45,7 @@ from data_profiling.serialize_report import SerializeReport
 from data_profiling.utils.dataframe import hash_dataframe
 from data_profiling.utils.logger import ProfilingLogger
 from data_profiling.utils.paths import get_config
+from data_profiling.visualisation.charts import ChartSpec
 
 logger = ProfilingLogger(name="ReportLogger")
 
@@ -351,7 +353,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
         """Write the report to a file.
 
         Args:
-            output_file: The name or the path of the file to generate including the extension (.html, .json).
+            output_file: The name or the path of the file to generate including the extension (.html, .json, .md).
             silent: if False, opens the file in the default browser or download it in a Google Colab environment
         """
         pillow_version = package_version("Pillow")
@@ -366,6 +368,8 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
         if output_file.suffix == ".json":
             data = self.to_json()
+        elif output_file.suffix == ".md":
+            data = self.to_markdown()
         else:
             if not self.config.html.inline:
                 self.config.html.assets_path = str(output_file.parent)
@@ -380,7 +384,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
                 output_file = output_file.with_suffix(".html")
                 warnings.warn(
                     f"Extension {suffix} not supported. For now we assume .html was intended. "
-                    f"To remove this warning, please use .html or .json."
+                    f"To remove this warning, please use .html, .json or .md."
                 )
 
         disable_progress_bar = not self.config.progress_bar
@@ -402,18 +406,24 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
     def _render_html(self) -> str:
         from data_profiling.report.presentation.flavours import HTMLReport
+        from data_profiling.report.presentation.flavours.html.masthead import (
+            get_masthead,
+        )
 
         report = self.report
 
         with tqdm(
             total=1, desc="Render HTML", disable=not self.config.progress_bar
-        ) as pbar:
+        ) as pbar, use_language(self.config.language):
             html = HTMLReport(copy.deepcopy(report)).render(
                 nav=self.config.html.navbar_show,
                 offline=self.config.html.use_local_assets,
                 inline=self.config.html.inline,
                 assets_prefix=self.config.html.assets_prefix,
                 primary_color=self.config.html.style.primary_colors[0],
+                primary_colors=self.config.html.style.primary_colors,
+                labels=self.config.html.style._labels,
+                **get_masthead(self.description_set),
                 logo=self.config.html.style.logo,
                 theme=self.config.html.style.theme,
                 title=self.description_set.analysis.title,
@@ -466,6 +476,8 @@ class ProfileReport(SerializeReport, ExpectationsReport):
                     return encode_it(o.dict())
                 elif isinstance(o, np.generic):
                     return o.item()
+                elif isinstance(o, ChartSpec):
+                    return encode_it(o.to_dict())
                 else:
                     return str(o)
 
@@ -491,6 +503,24 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
         """
         return self.html
+
+    def to_markdown(self) -> str:
+        """Generate the report as Markdown, written by the library from the computed
+        statistics (overview, alerts, variables, correlations, missing values,
+        sample and duplicates). Meant for tools and language models that read text
+        more easily than HTML. Text follows ``config.language``.
+
+        Returns:
+            Profiling report in Markdown.
+        """
+        from data_profiling.report.markdown import render_markdown
+
+        with tqdm(
+            total=1, desc="Render Markdown", disable=not self.config.progress_bar
+        ) as pbar, use_language(self.config.language):
+            markdown = render_markdown(self.description_set, self.config)
+            pbar.update()
+        return markdown
 
     def to_json(self) -> str:
         """Represent the ProfileReport as a JSON string

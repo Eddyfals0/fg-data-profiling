@@ -1,10 +1,6 @@
-<div id="sample-container" class="col-sm-12">
-    <div class="table-responsive">
-        {{ sample_html }}
-        {% if caption %}
-            <div class="caption text-center text-body-secondary">
-                {{ caption }}
-            </div>
-        {% endif %}
-    </div>
+<div class="table-scroll table-scroll--data" id="sample-container">
+    {{ sample_html }}
 </div>
+{% if caption %}
+    <p class="caption">{{ caption }}</p>
+{% endif %}

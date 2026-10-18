@@ -19,24 +19,25 @@ def manage_matplotlib_context() -> Any:
     #   We copied the style file to remove dependencies on the Seaborn package.
     #   Check it out, it's an awesome library for plotting
     customRcParams = {
-        "patch.facecolor": "#348ABD",  # blue
+        "patch.facecolor": "#111111",  # ink
         "patch.antialiased": True,
         "font.size": 10.0,
         "figure.edgecolor": "0.50",
         # Seaborn common parameters
         "figure.facecolor": "white",
-        "text.color": ".15",
-        "axes.labelcolor": ".15",
+        "text.color": "#6b6b6b",
+        "axes.labelcolor": "#6b6b6b",
         "legend.numpoints": 1,
         "legend.scatterpoints": 1,
         "xtick.direction": "out",
         "ytick.direction": "out",
-        "xtick.color": ".15",
-        "ytick.color": ".15",
+        "xtick.color": "#6b6b6b",
+        "ytick.color": "#6b6b6b",
         "axes.axisbelow": True,
         "image.cmap": "Greys",
         "font.family": ["sans-serif"],
         "font.sans-serif": [
+            "Helvetica Neue",
             "Arial",
             "Liberation Sans",
             "Bitstream Vera Sans",
@@ -48,10 +49,10 @@ def manage_matplotlib_context() -> Any:
         # .15 = dark_gray
         # .8 = light_gray
         "axes.grid": True,
-        "axes.facecolor": "#EAEAF2",
+        "axes.facecolor": "white",
         "axes.edgecolor": "white",
         "axes.linewidth": 0,
-        "grid.color": "white",
+        "grid.color": "#ececec",
         # Seaborn notebook context
         "figure.figsize": [8.0, 5.5],
         "axes.labelsize": 11,

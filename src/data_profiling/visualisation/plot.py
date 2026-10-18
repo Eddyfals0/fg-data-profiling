@@ -19,11 +19,29 @@ from wordcloud import WordCloud
 from data_profiling.config import Settings
 from data_profiling.utils.common import convert_timestamp_to_datetime
 from data_profiling.visualisation.context import manage_matplotlib_context
+from data_profiling.visualisation.charts import (
+    ChartSpec,
+    correlation_spec,
+    frequency_spec,
+    histogram_spec,
+    scatter_spec,
+)
 from data_profiling.visualisation.utils import plot_360_n0sc0pe
 
 
 def format_fn(tick_val: int, tick_pos: Any) -> str:
     return convert_timestamp_to_datetime(tick_val).strftime("%Y-%m-%d %H:%M:%S")
+
+
+def _word_cloud_color(word: str, font_size: int, *args: Any, **kwargs: Any) -> str:
+    # Larger words in ink, smaller ones in progressively lighter greys.
+    if font_size >= 40:
+        return "#111111"
+    if font_size >= 24:
+        return "#3a3a3a"
+    if font_size >= 14:
+        return "#6b6b6b"
+    return "#8a8a8a"
 
 
 def _plot_word_cloud(
@@ -39,6 +57,7 @@ def _plot_word_cloud(
         wordcloud = WordCloud(
             font_path=config.plot.font_path,
             background_color="white",
+            color_func=_word_cloud_color,
             random_state=123,
             width=300,
             height=200,
@@ -170,8 +189,30 @@ def _is_valid_hist_data(series: np.ndarray, bins: Union[int, np.ndarray]) -> boo
     return True
 
 
-@manage_matplotlib_context()
 def histogram(
+    config: Settings,
+    series: np.ndarray,
+    bins: Union[int, np.ndarray],
+    date: bool = False,
+) -> Union[str, ChartSpec, None]:
+    """Histogram of the data: a browser-drawn chart spec, or a static image."""
+    if not _is_valid_hist_data(series, bins):
+        return None
+    if config.plot.interactive:
+        return histogram_spec(
+            series,
+            bins,
+            labels=list(config.html.style._labels),
+            date=date,
+            mini=False,
+            fallback=_histogram_image,
+            fallback_args=(config, series, bins, date),
+        )
+    return _histogram_image(config, series, bins, date)
+
+
+@manage_matplotlib_context()
+def _histogram_image(
     config: Settings,
     series: np.ndarray,
     bins: Union[int, np.ndarray],
@@ -198,8 +239,30 @@ def histogram(
     return plot_360_n0sc0pe(config)
 
 
-@manage_matplotlib_context()
 def mini_histogram(
+    config: Settings,
+    series: np.ndarray,
+    bins: Union[int, np.ndarray],
+    date: bool = False,
+) -> Union[str, ChartSpec, None]:
+    """Small histogram of the data: a browser-drawn chart spec, or a static image."""
+    if not _is_valid_hist_data(series, bins):
+        return None
+    if config.plot.interactive:
+        return histogram_spec(
+            series,
+            bins,
+            labels=list(config.html.style._labels),
+            date=date,
+            mini=True,
+            fallback=_mini_histogram_image,
+            fallback_args=(config, series, bins, date),
+        )
+    return _mini_histogram_image(config, series, bins, date)
+
+
+@manage_matplotlib_context()
+def _mini_histogram_image(
     config: Settings,
     series: np.ndarray,
     bins: Union[int, np.ndarray],
@@ -274,8 +337,24 @@ def get_correlation_font_size(n_labels: int) -> Optional[int]:
     return font_size
 
 
+def correlation_matrix(
+    config: Settings, data: pd.DataFrame, vmin: int = -1
+) -> Union[str, ChartSpec]:
+    """Correlation matrix: a browser-drawn chart spec, or a static image."""
+    if config.plot.interactive:
+        return correlation_spec(
+            data,
+            vmin,
+            fallback=_correlation_matrix_image,
+            fallback_args=(config, data, vmin),
+        )
+    return _correlation_matrix_image(config, data, vmin)
+
+
 @manage_matplotlib_context()
-def correlation_matrix(config: Settings, data: pd.DataFrame, vmin: int = -1) -> str:
+def _correlation_matrix_image(
+    config: Settings, data: pd.DataFrame, vmin: int = -1
+) -> str:
     """Plot image of a matrix correlation.
 
     Args:
@@ -389,8 +468,25 @@ def scatter_series(
     return plot_360_n0sc0pe(config)
 
 
-@manage_matplotlib_context()
 def scatter_pairwise(
+    config: Settings, series1: pd.Series, series2: pd.Series, x_label: str, y_label: str
+) -> Union[str, ChartSpec]:
+    """Scatter plot of two series: a browser-drawn chart spec, or a static image."""
+    if config.plot.interactive:
+        return scatter_spec(
+            series1,
+            series2,
+            x_label,
+            y_label,
+            threshold=config.plot.scatter_threshold,
+            fallback=_scatter_pairwise_image,
+            fallback_args=(config, series1, series2, x_label, y_label),
+        )
+    return _scatter_pairwise_image(config, series1, series2, x_label, y_label)
+
+
+@manage_matplotlib_context()
+def _scatter_pairwise_image(
     config: Settings, series1: pd.Series, series2: pd.Series, x_label: str, y_label: str
 ) -> str:
     """Scatter plot (or hexbin plot) from two series
@@ -528,8 +624,34 @@ def _plot_pie_chart(
     return ax, legend
 
 
-@manage_matplotlib_context()
 def cat_frequency_plot(
+    config: Settings,
+    data: pd.Series,
+) -> Union[str, ChartSpec]:
+    """Category frequency plot: a browser-drawn chart spec, or a static image.
+
+    Pie charts are only available as static images.
+    """
+    plot_type = config.plot.cat_freq.type
+    if plot_type not in ("bar", "pie"):
+        raise ValueError(
+            f"'{plot_type}' is not a valid plot type! "
+            "Expected values are ['bar', 'pie']"
+        )
+    if config.plot.interactive and plot_type == "bar":
+        return frequency_spec(
+            data,
+            labels=list(config.html.style._labels),
+            redact=config.vars.cat.redact,
+            colors=config.plot.cat_freq.colors,
+            fallback=_cat_frequency_plot_image,
+            fallback_args=(config, data),
+        )
+    return _cat_frequency_plot_image(config, data)
+
+
+@manage_matplotlib_context()
+def _cat_frequency_plot_image(
     config: Settings,
     data: pd.Series,
 ) -> str:

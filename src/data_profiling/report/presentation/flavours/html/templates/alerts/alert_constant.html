@@ -1,1 +1,2 @@
-<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name }}</code></a> has constant value "{{ alert.values['value_counts_without_nan'].index[0] }}"
+{% set column %}<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name | e }}</code></a>{% endset %}
+{{ alert_text('constant', column=column, value=(alert.values['value_counts_without_nan'].index[0] | e)) }}

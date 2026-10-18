@@ -1,11 +1,10 @@
 {% if button.anchor_id != 'toggle-correlation-description' %}
-    {{ button.render() }}
-    <div id="bottom-{{ button.anchor_id }}" class="collapse">
-        {{ item.render() }}
-    </div>
-{% else %}
-    <div class="row item">
+    <details class="more" id="bottom-{{ button.anchor_id }}">
         {{ button.render() }}
-        {{ item.render() }}
-    </div>
+        <div class="more-body">
+            {{ item.render() }}
+        </div>
+    </details>
+{% else %}
+    {{ item.render() }}
 {% endif %}

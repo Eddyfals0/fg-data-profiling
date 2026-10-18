@@ -1,1 +1,2 @@
-<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name }}</code></a> is non stationary
+{% set column %}<a href="#pp_var_{{ alert.anchor_id }}"><code>{{ alert.column_name | e }}</code></a>{% endset %}
+{{ alert_text('non_stationary', column=column) }}

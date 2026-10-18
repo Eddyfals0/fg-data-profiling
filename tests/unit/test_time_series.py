@@ -1,3 +1,4 @@
+import re
 import numpy as np
 import pandas as pd
 import pytest
@@ -50,9 +51,9 @@ def sample_ts_df():
 
 def test_timeseries_identification(html_profile: str):
 
-    assert "<th>TimeSeries<td" in html_profile, "TimeSeries not detected"
+    assert re.search(r"<th scope=row>[^<]*<span data-l=\"?TimeSeries\"?>", html_profile), "TimeSeries not detected"
     assert (
-        'TimeSeries<td style="white-space: nowrap;">8' in html_profile
+        'TimeSeries</span><td>8' in html_profile
     ), "TimeSeries incorrectly identified"
 
 

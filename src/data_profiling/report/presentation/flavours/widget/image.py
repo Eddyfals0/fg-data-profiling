@@ -4,11 +4,15 @@ from ipywidgets import widgets
 
 from data_profiling.config import ImageType
 from data_profiling.report.presentation.core.image import Image
+from data_profiling.visualisation.charts import ChartSpec
 
 
 class WidgetImage(Image):
     def render(self) -> widgets.Widget:
         image = self.content["image"]
+        if isinstance(image, ChartSpec):
+            # Widgets cannot run the report script: draw the static version.
+            image = image.fallback() or ""
         if self.content["image_format"] == ImageType.svg:
             image = image.replace("svg ", 'svg style="max-width: 100%" ')
 

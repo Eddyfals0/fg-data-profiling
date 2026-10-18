@@ -11,6 +11,9 @@ recursive-include src/data_profiling/report/presentation/flavours/html/templates
 # Configuration
 include src/data_profiling/*.yaml
 
+# Report translations
+include src/data_profiling/locales/*.json
+
 # Spark Dev venv
 recursive-include venv *.yml
 
